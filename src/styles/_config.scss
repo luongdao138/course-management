@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+@mixin transition($duration: 0.25s) {
+  transition: all $duration linear;
+}
+
 input {
   border: none;
   outline: none;

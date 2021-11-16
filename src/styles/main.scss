@@ -1,1 +1,26 @@
 @import './config';
+
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+}
+
+.load-more-btn {
+  width: 100%;
+  max-width: 400px;
+  margin: 1.25rem auto 0 auto;
+  display: block;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-weight: 600;
+  background-color: tomato;
+}
