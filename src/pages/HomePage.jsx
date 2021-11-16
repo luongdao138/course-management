@@ -61,6 +61,7 @@ const HomePage = () => {
             {hasNextPage && (
               <button
                 className='load-more-btn'
+                disabled={isFetchingNextPage}
                 onClick={() => {
                   fetchNextPage();
                 }}
