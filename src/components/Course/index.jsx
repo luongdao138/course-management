@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import classes from './Course.module.scss';
+import { MdDelete } from 'react-icons/md';
+import { FaEdit, FaEye } from 'react-icons/fa';
+import useRouter from '../../hooks/useRouter';
 
 const levelMap = {
   1: 'Trình độ cơ bản',
@@ -9,8 +11,17 @@ const levelMap = {
 };
 
 const Course = ({ id, name, image, level, tags, createdAt }) => {
+  const { push } = useRouter();
   return (
-    <Link to={`/course/${id}`} className={classes.course}>
+    <div className={classes.course}>
+      <div className={classes.overlay}>
+        <FaEye className={classes.view} onClick={() => push(`/course/${id}`)} />
+        <FaEdit
+          className={classes.edit}
+          onClick={() => push(`/course/${id}/edit`)}
+        />
+        <MdDelete className={classes.delete} />
+      </div>
       <img src={image} alt='thumnail' className={classes.thumbnail} />
       <div className={classes.meta}>
         <h3 className={classes.name}>{name}</h3>
@@ -28,7 +39,7 @@ const Course = ({ id, name, image, level, tags, createdAt }) => {
           <span>{createdAt}</span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
