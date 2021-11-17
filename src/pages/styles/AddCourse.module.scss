@@ -1,0 +1,50 @@
+.title {
+  text-align: center;
+  font-size: 30px;
+  color: #333;
+  margin-bottom: 1rem;
+}
+.formWrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba($color: #000000, $alpha: 0.1);
+
+  .submitButton,
+  .backButton {
+    display: block;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-weight: 600;
+    background-color: steelblue;
+  }
+
+  .backButton {
+    background-color: transparent;
+    margin-right: 0.5rem;
+    color: #333;
+  }
+
+  .tags {
+    margin-top: -0.5rem;
+    line-height: 24px;
+
+    .tag {
+      position: relative;
+      font-weight: 600;
+      font-size: 12px;
+      color: #888585;
+      svg {
+        cursor: pointer;
+      }
+      & + .tag {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}

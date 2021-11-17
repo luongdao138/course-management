@@ -1,5 +1,6 @@
 import React from 'react';
 import { useInfiniteQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 import { getCourses } from '../api/courseAPI';
 import { CourseList } from '../components';
 import Loading from '../components/Loading';
@@ -54,6 +55,9 @@ const HomePage = () => {
       ) : (
         isSuccess && (
           <>
+            <Link to='/add-course'>
+              <button className='add-course'>Add course</button>
+            </Link>
             <CourseList courses={courses} />
             {isFetchingNextPage && (
               <Loading styles={{ margin: '1.5rem 0 1rem 0' }} />
