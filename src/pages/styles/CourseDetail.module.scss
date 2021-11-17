@@ -35,6 +35,37 @@
       display: flex;
       flex-direction: column;
 
+      .actions {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        button {
+          display: flex;
+          align-items: center;
+          padding: 0.25rem 0.5rem;
+          border-radius: 4px;
+          & + button {
+            margin-left: 0.5rem;
+          }
+          svg {
+            margin-right: 0.25rem;
+          }
+          span {
+            font-size: 12px;
+            font-weight: 600;
+          }
+          &:first-child {
+            color: green;
+          }
+          &:nth-child(2) {
+            color: red;
+            svg {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+
       .item {
         margin-bottom: 0.5rem;
         font-size: 0.9rem;

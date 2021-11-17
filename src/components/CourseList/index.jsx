@@ -4,7 +4,6 @@ import Course from '../Course';
 import moment from 'moment';
 
 const CourseList = ({ courses }) => {
-  console.log(classes);
   return (
     <div className={classes.courseList}>
       {courses.map((course, index) => (

@@ -1,10 +1,11 @@
 import React from 'react';
 import useRouter from '../hooks/useRouter';
-import { useQueryClient, useQuery } from 'react-query';
-import { getCourseById } from '../api/courseAPI';
+import useCourseDetail from '../hooks/useCourseDetail';
 import Loading from '../components/Loading';
 import moment from 'moment';
 import classes from './styles/CourseDetail.module.scss';
+import { MdDelete } from 'react-icons/md';
+import { FaEdit } from 'react-icons/fa';
 
 const levelMap = {
   1: 'Trình độ cơ bản',
@@ -15,39 +16,8 @@ const levelMap = {
 const CourseDetailPage = () => {
   const router = useRouter();
   const { courseId } = router.query;
-  const queryClient = useQueryClient();
 
-  const {
-    data: course,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useQuery(
-    ['courses', 'detail', { courseId }],
-    () => getCourseById(courseId),
-    {
-      staleTime: 30 * 1000,
-      notifyOnChangeProps: 'tracked',
-      onSuccess: (data) => {
-        console.log(data);
-      },
-      select: (data) => data.course,
-      retry: 1,
-      placeholderData: () => {
-        const listData = queryClient.getQueryData(['courses', 'list']);
-        if (listData) {
-          const courses = listData.pages.reduce(
-            (acc, group) => acc.concat(group.courses),
-            []
-          );
-          const course = courses?.find((c) => c._id === courseId);
-          return { course };
-        } else {
-          return undefined;
-        }
-      },
-    }
-  );
+  const { course, isLoading, isError, isSuccess } = useCourseDetail(courseId);
 
   if (isLoading) {
     return <Loading styles={{ marginTop: '3rem' }} />;
@@ -84,6 +54,16 @@ const CourseDetailPage = () => {
                     {tag}
                   </span>
                 ))}
+              </div>
+              <div className={classes.actions}>
+                <button onClick={() => router.push(`/course/${courseId}/edit`)}>
+                  <FaEdit />
+                  <span>Edit</span>
+                </button>
+                <button>
+                  <MdDelete />
+                  <span>Delete</span>
+                </button>
               </div>
             </div>
           </div>
