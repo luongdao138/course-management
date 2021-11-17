@@ -6,6 +6,12 @@ import Loading from '../components/Loading';
 import moment from 'moment';
 import classes from './styles/CourseDetail.module.scss';
 
+const levelMap = {
+  1: 'Trình độ cơ bản',
+  2: 'Trình độ trung bình',
+  3: 'Trình độ nâng cao',
+};
+
 const CourseDetailPage = () => {
   const router = useRouter();
   const { courseId } = router.query;
@@ -66,7 +72,7 @@ const CourseDetailPage = () => {
             <div className={classes.right}>
               <span className={classes.item}>
                 <strong>Level: </strong>
-                {course.level}
+                {levelMap[course.level]}
               </span>
               <span className={classes.item}>
                 <strong>Released at: </strong>
