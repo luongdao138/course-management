@@ -9,6 +9,10 @@
   transition: all $duration linear;
 }
 
+body {
+  background-color: #f2f2f2;
+}
+
 input {
   border: none;
   outline: none;

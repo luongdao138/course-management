@@ -4,7 +4,7 @@ import classes from './Course.module.scss';
 
 const Course = ({ id, name, image, level, tags, createdAt }) => {
   return (
-    <Link to='/' className={classes.course}>
+    <Link to={`/course/${id}`} className={classes.course}>
       <img src={image} alt='thumnail' className={classes.thumbnail} />
       <div className={classes.meta}>
         <h3 className={classes.name}>{name}</h3>
