@@ -6,6 +6,12 @@ export const getCourses = (params) => {
   });
 };
 
+export const searchCourses = (params) => {
+  return axios.get('/courses/search', {
+    params,
+  });
+};
+
 export const getCourseById = (courseId) => {
   return axios.get(`/courses/${courseId}`);
 };

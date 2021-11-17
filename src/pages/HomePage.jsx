@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CourseList } from '../components';
 import Loading from '../components/Loading';
+import Search from '../components/Search';
 import useCourseList from '../hooks/useCourseList';
 
 const HomePage = () => {
+  const [searchData, setSearchData] = useState(null);
+
   const {
     data,
     isSuccess,
@@ -31,10 +34,13 @@ const HomePage = () => {
       ) : (
         isSuccess && (
           <>
-            <Link to='/add-course'>
-              <button className='add-course'>Add course</button>
-            </Link>
-            <CourseList courses={courses} />
+            <div className='top'>
+              <Link to='/add-course'>
+                <button className='add-course'>Add course</button>
+              </Link>
+              <Search setSearchData={setSearchData} />
+            </div>
+            <CourseList courses={searchData || courses} />
             {isFetchingNextPage && (
               <Loading styles={{ margin: '1.5rem 0 1rem 0' }} />
             )}
